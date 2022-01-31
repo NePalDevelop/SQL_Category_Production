@@ -68,8 +68,9 @@ VALUES  (1, 2),  --'Молоток' - 'Товары для дома'
 
 SELECT P.name [Продукт], C.name [Категория]
 FROM dbo.Products AS P
-    LEFT JOIN dbo.RelationProd_Cat AS R 
+    LEFT JOIN 
+        (dbo.RelationProd_Cat AS R 
+            INNER JOIN dbo.Categories AS C 
+            ON C.catid = R.category_id)    
         ON P.prodid = R.products_id
-    LEFT JOIN dbo.Categories AS C 
-        ON C.catid = R.category_id
 ORDER BY P.name  
