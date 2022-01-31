@@ -24,7 +24,43 @@ CREATE TABLE Categories (
 );
 
 CREATE TABLE RelationProd_Cat (
+    id INT NOT NULL IDENTITY,
 	products_id  INT NOT NULL,
 	category_id INT NOT NULL
 );
 
+SET IDENTITY_INSERT Categories ON;
+INSERT INTO Categories (catid, name)
+VALUES  (1, 'Канцтовары'),
+        (2, 'Товары для дома'),
+        (3, 'Инструменты');
+SET IDENTITY_INSERT Categories OFF;      
+
+SET IDENTITY_INSERT Products ON;
+INSERT INTO Products (prodid, name)
+VALUES  (1, 'Молоток'),
+        (2, 'Блокнот'),
+        (3, 'Дрель'),
+        (4, 'Швабра'),
+        (5, 'Карандаш'),
+        (6, 'Отвертка'),
+        (7, 'Ножницы'),
+        (8, 'Скатерть'),
+        (9, 'Ручка'),
+        (10, 'Молоко');
+SET IDENTITY_INSERT Products OFF;  
+
+INSERT INTO RelationProd_Cat (products_id, category_id)
+VALUES  (1, 2),  --'Молоток'
+        (1, 3),  --'Молоток'
+        (2, 1),  --'Блокнот'
+        (2, 2),  --'Блокнот'
+        (3, 3),  --'Дрель'
+        (4, 2),  --'Швабра'
+        (5, 1),  --'Карандаш'
+        (6, 3),  --'Отвертка'
+        (7, 1),  -- 'Ножницы'
+        (7, 2),  -- 'Ножницы'
+        (8, 2),  -- 'Скатерть'
+        (9, 1)  -- 'Ручка'
+        ;
